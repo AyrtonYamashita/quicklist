@@ -61,7 +61,9 @@
   }
 }
 
-/* .show-off {
-  display: none;
-  opacity: 0;
-} */
+@media (width < 80rem){
+  .message{
+    max-width: 20rem;
+    max-height: 16rem;
+  }
+}

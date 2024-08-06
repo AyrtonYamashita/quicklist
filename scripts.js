@@ -9,6 +9,7 @@ let item = item_value.value
 
 
 item_value.addEventListener("input", () => {
+  item_value.value = item_value.value.replace(has_characters, "")
   item = item_value.value.replace(has_characters, "")
   if (item.length >= 32) {
     item_value.style.border = "2px solid var(--color-danger)"
