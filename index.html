@@ -28,6 +28,8 @@
           class="add-purchase"
           id="purchase-input"
           placeholder="Adicione um novo item"
+          maxlength="32"
+          minlength="3"
         />
         <button type="submit">Adicionar item</button>
       </form>
@@ -35,10 +37,10 @@
       <div class="list" id="purchase-list">
 
       </div>
-      <div class="message" id="message">
+      <div class="message danger" id="message">
         <div class="icon-type"></div>
         <span></span>
-        <img src="./assets/icons/delete.svg" alt="" />
+        <button class="close-msg" onclick="closeMessage('message')"></button>
       </div>
     </main>
     <script src="./scripts.js"></script>

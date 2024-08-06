@@ -1,5 +1,5 @@
 .message {
-  transition: opacity .2s ease, scale .2s ease;
+  transition: opacity 0.2s ease, scale 0.2s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -15,8 +15,25 @@
   opacity: 0;
   scale: .875;
 
-  & img[src*="delete"] {
+  & button {
+    position: relative;
     margin-left: auto;
+    appearance: none;
+    border: none;
+
+    &::before{
+      position: absolute;
+      cursor: pointer;
+      content: "";
+      width: 1.25rem;
+      height: 1.25rem;
+      top: 50%;
+      right: 20%;
+      transform: translate(-20%, -50%);
+      background: url(../assets/icons/delete.svg);
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
 
