@@ -1,0 +1,46 @@
+.message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  max-width: 40rem;
+  height: 16rem;
+  height: 100%;
+  width: 100%;
+  margin-top: 2.25rem;
+  background-color: var(--border-primary);
+  color: var(--always-white);
+
+  & img[src*="delete"] {
+    margin-left: auto;
+  }
+}
+
+.danger {
+  background-color: var(--color-danger);
+  .icon-type {
+    display: flex;
+    background: url(../assets/icons/warning.svg);
+    background-position: center;
+    background-size: cover;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.success {
+  background-color: #42b83e;
+  .icon-type {
+    display: flex;
+    background: url(../assets/icons/success.svg);
+    background-position: center;
+    background-size: cover;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.show-off {
+  display: none;
+}
