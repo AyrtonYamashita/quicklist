@@ -131,11 +131,28 @@ main {
     & input[type="checkbox"]:not(:checked):hover::before {
       border: 1px solid var(--border-hover);
     }
-    & img {
-      cursor: pointer;
+    & button {
+      position: relative;
+      appearance: none;
+      border: none;
+      background: none;
       width: 1rem;
       height: 1rem;
       margin-left: auto;
+
+      &::before{
+        position: absolute;
+        display: block;
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        top: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        background: url(../assets/icons/trash.svg);
+        background-position: center;
+        background-size: cover;
+      }
     }
   }
 }

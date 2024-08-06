@@ -1,4 +1,5 @@
 .message {
+  transition: opacity .2s ease, scale .2s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -11,6 +12,8 @@
   margin-top: 2.25rem;
   background-color: var(--border-primary);
   color: var(--always-white);
+  opacity: 0;
+  scale: .875;
 
   & img[src*="delete"] {
     margin-left: auto;
@@ -41,6 +44,7 @@
   }
 }
 
-.show-off {
+/* .show-off {
   display: none;
-}
+  opacity: 0;
+} */
