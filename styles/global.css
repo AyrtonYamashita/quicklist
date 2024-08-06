@@ -45,6 +45,10 @@ header{
   padding: 1.56rem;
 }
 
+input {
+  font: var(--font-p);
+}
+
 a{
   text-decoration: none;
   color: var(--color-brand);
