@@ -1,46 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quicklist</title>
-    <link rel="stylesheet" href="./styles/index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <img src="./assets/icons/logo.svg" alt="" />
-    </header>
-
-    <main>
-      <div class="heading">
-        <a href="home.html"><- Voltar</a>
-        <h1>Compras da semana</h1>
-      </div>
-      <form>
-        <input
-          type="text"
-          class="add-purchase"
-          id="purchase-input"
-          placeholder="Adicione um novo item"
-        />
-        <button type="submit">Adicionar item</button>
-      </form>
-
-      <div class="list" id="purchase-list">
-
-      </div>
-      <div class="message" id="message">
-        <div class="icon-type"></div>
-        <span></span>
-        <img src="./assets/icons/delete.svg" alt="" />
-      </div>
-    </main>
-    <script src="./scripts/scripts.js"></script>
-  </body>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quicklist</title>
+  <link rel="stylesheet" href="./styles/home.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="initial-page">
+    <img src="./assets/icons/logo.svg" alt="">
+    <h2>Sua lista de compras muito mais prática e tecnologica</h2>
+    <a href="form.html">Criar uma lista agora</a>
+  </div>
+  <script src="./scripts.js"></script>
+</body>
 </html>
