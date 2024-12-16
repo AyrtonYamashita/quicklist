@@ -36,22 +36,10 @@ main {
       }
     }
 
-    & button {
-      width: 10rem;
-      height: 2.75rem;
-      border-radius: 0.75rem;
-      border: none;
-      background-color: var(--color-brand);
-      color: var(--always-white);
-      font: var(--font-label);
-      transition: 0.2s ease;
 
-      &:hover {
-        background-color: var(--color-brand-hover);
-      }
-    }
   }
 }
+
 
 .heading {
   display: flex;
@@ -100,6 +88,7 @@ main {
 
     & label {
       margin-left: 1.5rem;
+      transition: .2s ease;
     }
 
     & input[type="checkbox"] {
@@ -131,6 +120,7 @@ main {
     & input[type="checkbox"]:not(:checked):hover::before {
       border: 1px solid var(--border-hover);
     }
+
     & button {
       position: relative;
       appearance: none;
@@ -161,6 +151,7 @@ main {
   main {
     width: 100%;
     margin-top: 0%;
+
     & form {
       flex-direction: column;
       align-items: center;

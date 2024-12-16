@@ -4,6 +4,7 @@ const list_purchase = document.querySelector(".list")
 const message = document.querySelector("#message")
 const alert_message = document.querySelector("#message span")
 const close_message = document.querySelector(".close-alert")
+const save_list = document.querySelector(".save-list")
 const has_characters = /[^\p{L}0-9 ]+/gu
 
 let item = item_value.value
@@ -29,6 +30,11 @@ close_message.onclick = (e) => {
   message.classList.remove("success")
 }
 
+list_purchase.onclick = (e) => {
+  if (e.target.classList.contains("check-item")) {
+    e.target.closest(".purchase-item").classList.toggle("checked")
+  }
+}
 form.onsubmit = (e) => {
   e.preventDefault();
 
@@ -57,19 +63,20 @@ form.onsubmit = (e) => {
     setTimeout(() => {
       item_value.classList.toggle("error")
     }, 4000)
-    return showWarning("danger", "Seu item precisa de pelo o menos 3 caracteres para ser adicionado!")
+    return showWarning("danger", "Item inválido")
   }
 
 
   let purchase_item =
     `
         <div class="purchase-item" id="item-${item}">
-          <input type="checkbox" name="${item}" />
-          <label for="${item}">${item}</label>
+          <input type="checkbox" name="${item}" class="check-item" />
+          <label for="${item}" class="itemp">${item}</label>
           <button onclick="removeItem('item-${item}')"></button>
         </div>
         `
 
+  save_list.style.display = "initial"
   list_purchase.innerHTML += purchase_item
   showWarning("success", "Item adicionado a lista.")
   item = item_value.value = ""
@@ -83,7 +90,6 @@ function removeItem(id) {
     item.remove()
     showWarning("danger", "Item removido!")
   } else {
-    console.log("opa2")
   }
 }
 
@@ -101,16 +107,6 @@ function showWarning(type, details) {
     message.classList.remove("danger")
     message.classList.remove("success")
   }, 4000)
-}
-
-function closeMessage(id) {
-  const message_on = document.getElementById(id)
-  if (message_on) {
-    message_on.style.opacity = 0
-    message_on.style.scale = .875
-  } else {
-    console.log("Botão não identificado")
-  }
 }
 
 
