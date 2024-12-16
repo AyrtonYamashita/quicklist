@@ -3,14 +3,15 @@ const item_value = document.querySelector("input");
 const list_purchase = document.querySelector(".list")
 const message = document.querySelector("#message")
 const alert_message = document.querySelector("#message span")
-const close_message = document.querySelector(".close-msg")
-const has_characters = /[^a-zA-Z 0-9]+/g
+const close_message = document.querySelector(".close-alert")
+const has_characters = /[^\p{L}0-9 ]+/gu
+
 let item = item_value.value
 
 
 item_value.addEventListener("input", () => {
-  item_value.value = item_value.value.replace(has_characters, "")
-  item = item_value.value.replace(has_characters, "")
+  item_value.value = item_value.value.replace(has_characters, "").substring(0, 31)
+  item = item_value.value.replace(has_characters, "").substring(0, 31)
   if (item.length >= 32) {
     item_value.style.border = "2px solid var(--color-danger)"
     setTimeout(() => {
@@ -21,37 +22,43 @@ item_value.addEventListener("input", () => {
 
 })
 
+close_message.onclick = (e) => {
+  message.style.opacity = 0
+  message.style.scale = .875
+  message.classList.remove("danger")
+  message.classList.remove("success")
+}
+
 form.onsubmit = (e) => {
   e.preventDefault();
 
   // Validação de valor no input
   if (item == "") {
-    item_value.style.border = "2px solid var(--color-danger)"
+    item_value.classList.toggle("error")
     setTimeout(() => {
-      item_value.style.border = "2px solid var(--border-primary)"
+      item_value.classList.toggle("error")
     }, 4000)
     return showWarning("danger", "Você precisa escrever algo para adicionar na lista.")
-
   }
 
   // Validação de tipo de valor inserido
   if (has_characters.test(item)) {
     item = ""
-    item_value.style.border = "2px solid var(--color-danger)"
+    item_value.classList.toggle("error")
     setTimeout(() => {
-      item_value.style.border = "2px solid var(--border-primary)"
+      item_value.classList.toggle("error")
     }, 4000)
     return showWarning("danger", "Não utilize caracteres especiais na sua lista de compras!")
   }
 
-    // Validação de tamanho do valor inserido
-    if (item.length < 3) {
-      item_value.style.border = "2px solid var(--color-danger)"
-      setTimeout(() => {
-        item_value.style.border = "2px solid var(--border-primary)"
-      }, 4000)
-      return showWarning("danger", "Seu item precisa de pelo o menos 3 caracteres para ser adicionado!")
-    }
+  // Validação de tamanho do valor inserido
+  if (item.length < 3) {
+    item_value.classList.toggle("error")
+    setTimeout(() => {
+      item_value.classList.toggle("error")
+    }, 4000)
+    return showWarning("danger", "Seu item precisa de pelo o menos 3 caracteres para ser adicionado!")
+  }
 
 
   let purchase_item =
@@ -65,7 +72,7 @@ form.onsubmit = (e) => {
 
   list_purchase.innerHTML += purchase_item
   showWarning("success", "Item adicionado a lista.")
-  item_value.value = ""
+  item = item_value.value = ""
 
 }
 

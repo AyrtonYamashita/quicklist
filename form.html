@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quicklist</title>
-    <link rel="stylesheet" href="./styles/index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <img src="./assets/icons/logo.svg" alt="" />
-    </header>
 
-    <main>
-      <div class="heading">
-        <a href="index.html"><- Voltar</a>
-        <h1>Compras da semana</h1>
-      </div>
-      <form>
-        <input
-          type="text"
-          class="add-purchase"
-          id="purchase-input"
-          placeholder="Adicione um novo item"
-        />
-        <button type="submit">Adicionar item</button>
-      </form>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quicklist</title>
+  <link rel="stylesheet" href="./styles/index.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      <div class="list" id="purchase-list">
+<body>
+  <header>
+    <img src="./assets/icons/logo.svg" alt="" />
+  </header>
 
-      </div>
+  <main>
+    <div class="heading">
+      <a href="index.html"><- Voltar</a>
+          <h1>Compras da semana</h1>
+    </div>
+    <form>
+      <input type="text" class="add-purchase" id="purchase-input" placeholder="Adicione um novo item" />
+      <button type="submit">Adicionar item</button>
+    </form>
+
+    <div class="list" id="purchase-list">
       <div class="message" id="message">
         <div class="icon-type"></div>
         <span></span>
-        <img src="./assets/icons/delete.svg" alt="" />
+        <img src="./assets/icons/delete.svg" class="close-alert" alt="Fechar" />
       </div>
-    </main>
-    <script src="./scripts/scripts.js"></script>
-  </body>
+    </div>
+
+  </main>
+  <script src="./scripts/scripts.js"></script>
+</body>
+
 </html>

@@ -2,43 +2,26 @@
   transition: opacity 0.2s ease, scale 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 0.75rem;
   border-radius: 0.75rem;
-  max-width: 40rem;
-  height: 16rem;
-  height: 100%;
-  width: 100%;
-  margin-top: 2.25rem;
+  height: 3rem;
+  max-width: 60rem;
+  width: 40rem;
   background-color: var(--border-primary);
   color: var(--always-white);
   opacity: 0;
   scale: .875;
 
-  & button {
-    position: relative;
+  & img {
     margin-left: auto;
-    appearance: none;
-    border: none;
-
-    &::before{
-      position: absolute;
-      cursor: pointer;
-      content: "";
-      width: 1.25rem;
-      height: 1.25rem;
-      top: 50%;
-      right: 20%;
-      transform: translate(-20%, -50%);
-      background: url(../assets/icons/delete.svg);
-      background-position: center;
-      background-size: cover;
-    }
+    cursor: pointer;
   }
 }
 
 .danger {
   background-color: var(--color-danger);
+
   .icon-type {
     display: flex;
     background: url(../assets/icons/warning.svg);
@@ -51,6 +34,7 @@
 
 .success {
   background-color: #42b83e;
+
   .icon-type {
     display: flex;
     background: url(../assets/icons/success.svg);
@@ -61,8 +45,12 @@
   }
 }
 
-@media (width < 80rem){
-  .message{
+.error {
+  border: 2px solid var(--color-brand)
+}
+
+@media (width < 80rem) {
+  .message {
     max-width: 20rem;
     max-height: 16rem;
   }
