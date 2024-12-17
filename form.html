@@ -25,20 +25,47 @@
     </div>
     <form>
       <input type="text" class="add-purchase" id="purchase-input" placeholder="Adicione um novo item" />
-      <button type="submit" class="btn-brand">Adicionar item</button>
+
+      <div class="button-wrapper">
+        <button type="submit" class="btn-brand">Adicionar</button>
+        <button type="button" class="show-popup btn-brand">Salvar</button>
+      </div>
     </form>
 
     <div class="list" id="purchase-list">
     </div>
 
-    <button class="save-list btn-brand btn-lg">Salvar lista</button>
     <div class="message" id="message">
       <div class="icon-type"></div>
       <span></span>
       <img src="./assets/icons/delete.svg" class="close-alert" alt="Fechar" />
     </div>
 
+
   </main>
+  
+  <div class="container">
+    <div class="popup-save">
+      <h3>Criar uma lista</h3>
+
+      <fieldset>
+        <legend>Adicione um nome à lista</legend>
+        <input type="text" name="name-list" id="name-list" placeholder="Digite um nome">
+      </fieldset>
+
+      <fieldset>
+        <legend>Seus itens</legend>
+        <ul class="pack-list">
+        </ul>
+      </fieldset>
+
+      <p>Sua lista contém <span>3 itens</span>.</p>
+
+      <button type="button">Salvar</button>
+    </div>
+  </div>
+
+
   <script src="./scripts/scripts.js"></script>
 </body>
 

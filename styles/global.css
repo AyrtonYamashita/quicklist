@@ -36,6 +36,9 @@ html{
 
 body{
   background-color: var(--background-primary);
+  width: 100%;
+  height: 100vh;
+  transition: .2s ease;
 }
 
 header{

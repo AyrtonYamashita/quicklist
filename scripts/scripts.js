@@ -4,11 +4,25 @@ const list_purchase = document.querySelector(".list")
 const message = document.querySelector("#message")
 const alert_message = document.querySelector("#message span")
 const close_message = document.querySelector(".close-alert")
-const save_list = document.querySelector(".save-list")
+const show_popup = document.querySelector(".show-popup")
+const container = document.querySelector(".container")
+
+
 const has_characters = /[^\p{L}0-9 ]+/gu
 
 let item = item_value.value
+let timeoutId;
+let json_file = {}
 
+container.addEventListener("click", (e) => {
+  if (e.target == container) {
+    container.style.display = "none"
+  }
+})
+
+show_popup.addEventListener('click', () => {
+  container.style.display = "flex"
+})
 
 item_value.addEventListener("input", () => {
   item_value.value = item_value.value.replace(has_characters, "").substring(0, 31)
@@ -35,10 +49,10 @@ list_purchase.onclick = (e) => {
     e.target.closest(".purchase-item").classList.toggle("checked")
   }
 }
+
 form.onsubmit = (e) => {
   e.preventDefault();
 
-  // Validação de valor no input
   if (item == "") {
     item_value.classList.toggle("error")
     setTimeout(() => {
@@ -47,7 +61,6 @@ form.onsubmit = (e) => {
     return showWarning("danger", "Você precisa escrever algo para adicionar na lista.")
   }
 
-  // Validação de tipo de valor inserido
   if (has_characters.test(item)) {
     item = ""
     item_value.classList.toggle("error")
@@ -57,7 +70,6 @@ form.onsubmit = (e) => {
     return showWarning("danger", "Não utilize caracteres especiais na sua lista de compras!")
   }
 
-  // Validação de tamanho do valor inserido
   if (item.length < 3) {
     item_value.classList.toggle("error")
     setTimeout(() => {
@@ -65,7 +77,6 @@ form.onsubmit = (e) => {
     }, 4000)
     return showWarning("danger", "Item inválido")
   }
-
 
   let purchase_item =
     `
@@ -75,11 +86,10 @@ form.onsubmit = (e) => {
           <button onclick="removeItem('item-${item}')"></button>
         </div>
         `
-
-  save_list.style.display = "initial"
   list_purchase.innerHTML += purchase_item
-  showWarning("success", "Item adicionado a lista.")
+  showWarning("success", `${item} foi adicionado a lista.`)
   item = item_value.value = ""
+  updateShowPopup()
 
 }
 
@@ -89,7 +99,7 @@ function removeItem(id) {
   if (item) {
     item.remove()
     showWarning("danger", "Item removido!")
-  } else {
+    updateShowPopup()
   }
 }
 
@@ -101,12 +111,39 @@ function showWarning(type, details) {
   message.classList.add(type)
   alert_message.textContent = details
 
-  setTimeout(() => {
+  clearTimeout(timeoutId)
+
+  timeoutId = setTimeout(() => {
     message.style.opacity = 0
     message.style.scale = .875
     message.classList.remove("danger")
     message.classList.remove("success")
   }, 4000)
+}
+
+function updateShowPopup() {
+  const list_items = document.querySelectorAll(".purchase-item")
+
+  if (list_items) {
+    show_popup.style.display = "initial"
+  } else {
+    show_popup.style.display = "none"
+  }
+}
+
+function saveList() {
+  const list_items = document.querySelectorAll(".purchase-item")
+  let currentList = {
+    name: "",
+    items: [],
+  }
+
+  // list_items.forEach((item) => {
+  //   const id = item.id.slice(5)
+  //   currentList.
+  // })
+
+  localStorage.setItem("list", JSON.stringify(list_array))
 }
 
 

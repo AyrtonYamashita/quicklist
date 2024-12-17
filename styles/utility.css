@@ -12,6 +12,7 @@
   color: var(--always-white);
   opacity: 0;
   scale: .875;
+  margin-top: 1rem;
 
   & img {
     margin-left: auto;
@@ -56,7 +57,6 @@
 .btn-brand {
   width: 10rem;
   height: 2.75rem;
-  border-radius: 0.75rem;
   border: none;
   background-color: var(--color-brand);
   color: var(--always-white);
@@ -68,14 +68,18 @@
   }
 }
 
-.btn-lg {
-  width: 40rem;
+
+.button-wrapper {
+  display: flex;
+  border-radius: .75rem;
+  overflow: hidden;
 }
 
-.save-list {
+.show-popup {
   display: none;
-  margin-block: 1rem;
 }
+
+
 
 @media (width < 80rem) {
   .message {
