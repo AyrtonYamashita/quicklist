@@ -14,36 +14,53 @@
 </head>
 
 <body>
-  <header>
-    <img src="./assets/icons/logo.svg" alt="" />
-  </header>
 
-  <main>
-    <div class="heading">
-      <a href="index.html"><- Voltar</a>
-          <h1>Compras da semana</h1>
+  <section class="saved-lists">
+    <!-- <div class="nothing-here">
+      <img src="./assets/icons/nothing.svg" alt="">
+      <p>Parece que você ainda não criou uma lista.</p>
+    </div> -->
+
+    <div class="quicklist" id="list-name">
+      <img src="./assets/icons/shopping.svg" alt="">
+      <h3>Café da manhã</h3>
+      <p>3 itens</p>
     </div>
-    <form>
-      <input type="text" class="add-purchase" id="purchase-input" placeholder="Adicione um novo item" />
+  </section>
 
-      <div class="button-wrapper">
-        <button type="submit" class="btn-brand">Adicionar</button>
-        <button type="button" class="show-popup btn-brand">Salvar</button>
+  <section class="home">
+    <header>
+      <img src="./assets/icons/logo.svg" alt="" />
+    </header>
+
+    <main>
+      <div class="heading">
+        <a href="index.html"><- Voltar</a>
+            <h1>Compras da semana</h1>
       </div>
-    </form>
+      <form>
+        <input type="text" class="add-purchase" id="purchase-input" placeholder="Adicione um novo item" />
 
-    <div class="list" id="purchase-list">
-    </div>
+        <div class="button-wrapper">
+          <button type="submit" class="btn-brand">Adicionar</button>
+          <button type="button" class="show-popup btn-brand">Salvar</button>
+        </div>
+      </form>
 
-    <div class="message" id="message">
-      <div class="icon-type"></div>
-      <span></span>
-      <img src="./assets/icons/delete.svg" class="close-alert" alt="Fechar" />
-    </div>
+      <div class="list" id="purchase-list">
+      </div>
+
+      <div class="message" id="message">
+        <div class="icon-type"></div>
+        <span></span>
+        <img src="./assets/icons/delete.svg" class="close-alert" alt="Fechar" />
+      </div>
 
 
-  </main>
-  
+    </main>
+
+  </section>
+
   <div class="container">
     <div class="popup-save">
       <h3>Criar uma lista</h3>
@@ -59,12 +76,11 @@
         </ul>
       </fieldset>
 
-      <p>Sua lista contém <span>3 itens</span>.</p>
+      <p class="item-quantity"></p>
 
-      <button type="button">Salvar</button>
+      <button type="button" class="save_list">Salvar</button>
     </div>
   </div>
-
 
   <script src="./scripts/scripts.js"></script>
 </body>

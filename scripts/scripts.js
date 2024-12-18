@@ -6,8 +6,7 @@ const alert_message = document.querySelector("#message span")
 const close_message = document.querySelector(".close-alert")
 const show_popup = document.querySelector(".show-popup")
 const container = document.querySelector(".container")
-
-
+const save_list = document.querySelector(".save_list")
 const has_characters = /[^\p{L}0-9 ]+/gu
 
 let item = item_value.value
@@ -21,8 +20,34 @@ container.addEventListener("click", (e) => {
 })
 
 show_popup.addEventListener('click', () => {
+  const list_items = document.querySelectorAll(".purchase-item")
+  const pack_list = document.querySelector(".pack-list")
+  const quantity = document.querySelector(".item-quantity")
+  pack_list.innerHTML = ''
+
+  list_items.forEach((item) => {
+    const items = item.id.slice(5)
+    let storage = `<li>${items}</li>`
+    pack_list.innerHTML += storage
+  })
+
+  let message;
+
+  if (list_items.length <= 0) {
+    message = `Sua lista não possui itens`
+  } else if (list_items.length == 1) {
+    message = `Sua lista possui <span> ${list_items.length} item</span>.`
+  } else {
+    message = `Sua lista possui <span> ${list_items.length} itens</span>.`
+  }
+  quantity.innerHTML = ''
+  quantity.innerHTML += message
   container.style.display = "flex"
 })
+
+if (save_list) {
+  save_list.addEventListener("click", () => saveList())
+}
 
 item_value.addEventListener("input", () => {
   item_value.value = item_value.value.replace(has_characters, "").substring(0, 31)
@@ -124,26 +149,33 @@ function showWarning(type, details) {
 function updateShowPopup() {
   const list_items = document.querySelectorAll(".purchase-item")
 
-  if (list_items) {
-    show_popup.style.display = "initial"
+  if (list_items.length) {
+    show_popup.classList.remove("show-popup")
   } else {
-    show_popup.style.display = "none"
+    show_popup.classList.add("show-popup")
   }
 }
 
 function saveList() {
+  const name_list = document.querySelector("#name-list")
   const list_items = document.querySelectorAll(".purchase-item")
-  let currentList = {
-    name: "",
-    items: [],
+  const name = name_list.value.trim()
+
+  if (!name) {
+    return alert(`Sua lista não tem nome: ${name}`)
   }
 
-  // list_items.forEach((item) => {
-  //   const id = item.id.slice(5)
-  //   currentList.
-  // })
+  let currentList = []
 
-  localStorage.setItem("list", JSON.stringify(list_array))
+  list_items.forEach((item) => {
+    const items = item.id.slice(5)
+    currentList.push(items)
+  })
+
+  name_list.value = ''
+  container.style.display = "none"
+  showWarning("success", `Lista '${name}' criada com sucesso.`)
+  return localStorage.setItem(name, JSON.stringify(currentList))
 }
 
 
