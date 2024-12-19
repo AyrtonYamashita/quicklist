@@ -210,7 +210,7 @@ function showLists() {
       <p>Parece que você ainda não criou uma lista.</p>
     </div>`
   } else {
-    saved_lists.innerHTML = ``
+    // saved_lists.innerHTML = ``
     objLists.forEach((obj) => {
       console.log(obj)
       let list = `
