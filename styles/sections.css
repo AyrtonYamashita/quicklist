@@ -4,23 +4,23 @@
 
   main {
     height: 100%;
-    /* margin-inline: auto; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     & form {
+      padding-inline: 3rem;
       display: flex;
       gap: 1rem;
       max-width: 40rem;
       width: 100%;
 
       & input {
-        width: 30rem;
-        height: 2.75rem;
+        width: 20rem;
+        height: 2.8rem;
         border-radius: 0.75rem;
-        border: 2px solid var(--border-primary);
+        border: 1px solid var(--border-primary);
         padding: 1.125rem;
         transition: 0.2s ease;
 
@@ -30,16 +30,21 @@
         }
 
         &:hover {
-          border: 2px solid var(--border-hover);
+          border: 1px solid var(--border-hover);
         }
 
         &:focus {
           outline: none;
-          border: 2px solid var(--color-brand);
+          border: 1px solid var(--color-brand);
         }
       }
 
-
+      .button-wrapper {
+        height: 2.8rem;
+        display: flex;
+        border-radius: .75rem;
+        overflow: hidden;
+      }
     }
   }
 
@@ -58,6 +63,8 @@
     max-width: 39.18rem;
     width: 100%;
     margin-bottom: 2.75rem;
+    padding-inline: 3rem;
+
 
     & h1 {
       font: var(--font-title);
@@ -73,8 +80,9 @@
     max-height: 15rem;
     height: 100%;
     width: 100%;
-    /* margin-top: 2.5rem; */
+    margin-top: 2.5rem;
     overflow-y: auto;
+    padding-inline: 3rem;
 
     &::-webkit-scrollbar {
       width: 0.25rem;
@@ -91,10 +99,11 @@
       align-items: center;
       width: 100%;
       min-height: 3.06rem;
-      height: 100%;
+      height: 3.06rem;
       padding: 0.5rem 0.75rem;
       border-radius: 0.75rem;
       background-color: var(--background-secondary);
+
 
       & label {
         margin-left: 1.5rem;
@@ -164,11 +173,14 @@
   height: 100%;
   background-color: #e7e8ec;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: start;
   padding: 2rem;
+  gap: 1rem;
 
   .nothing-here {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,6 +189,8 @@
   }
 
   .quicklist {
+    overflow: hidden;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,8 +199,8 @@
     padding: 1rem;
     width: 100%;
     height: 4rem;
-    background-color: #ffffff;
     gap: .5rem;
+    background-color: #ffffff;
 
     h3 {
       font-size: .975rem;
@@ -202,11 +216,22 @@
       font-size: .75rem;
       color: var(--color-brand);
     }
+
+    ::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-brand);
+      bottom: 0px;
+      left: 0px;
+    }
+
   }
 }
 
 
-@media (width < 80rem) {
+/* @media (width < 80rem) {
   main {
     width: 100%;
     margin-top: 0%;
@@ -233,4 +258,4 @@
     max-width: 20rem;
     max-height: 11.3rem;
   }
-}
+} */

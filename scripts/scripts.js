@@ -11,7 +11,8 @@ const has_characters = /[^\p{L}0-9 ]+/gu
 
 let item = item_value.value
 let timeoutId;
-let json_file = {}
+
+showLists()
 
 container.addEventListener("click", (e) => {
   if (e.target == container) {
@@ -23,6 +24,8 @@ show_popup.addEventListener('click', () => {
   const list_items = document.querySelectorAll(".purchase-item")
   const pack_list = document.querySelector(".pack-list")
   const quantity = document.querySelector(".item-quantity")
+  const name_list = document.querySelector("#name-list")
+
   pack_list.innerHTML = ''
 
   list_items.forEach((item) => {
@@ -43,6 +46,7 @@ show_popup.addEventListener('click', () => {
   quantity.innerHTML = ''
   quantity.innerHTML += message
   container.style.display = "flex"
+  name_list.focus()
 })
 
 if (save_list) {
@@ -159,23 +163,68 @@ function updateShowPopup() {
 function saveList() {
   const name_list = document.querySelector("#name-list")
   const list_items = document.querySelectorAll(".purchase-item")
+  const container_itens = document.querySelector(".list")
   const name = name_list.value.trim()
 
   if (!name) {
     return alert(`Sua lista não tem nome: ${name}`)
   }
 
-  let currentList = []
+  // captura o array existente (se houver), caso não exista, cria um novo array
+  const listArray = JSON.parse(localStorage.getItem("quicklist.json")) || [];
 
+  // cria um novo objeto
+  const objList = {
+    name: "",
+    itens: [],
+  }
+
+  // adiciona os itens no objeto
   list_items.forEach((item) => {
     const items = item.id.slice(5)
-    currentList.push(items)
+    objList.itens.push(items)
   })
+  objList.name = name
+
+  // adiciona o objeto na lista de armazenamento
+  listArray.push(objList)
 
   name_list.value = ''
   container.style.display = "none"
+
   showWarning("success", `Lista '${name}' criada com sucesso.`)
-  return localStorage.setItem(name, JSON.stringify(currentList))
+  container_itens.innerHTML = ``
+  show_popup.classList.add("show-popup")
+  localStorage.setItem("quicklist.json", JSON.stringify(listArray))
+  return showLists()
+}
+
+function showLists() {
+  const objLists = JSON.parse(localStorage.getItem("quicklist.json"))
+  const saved_lists = document.querySelector(".saved-lists")
+
+  if (objLists == null) {
+    saved_lists.innerHTML = `    
+    <div class="nothing-here">
+      <img src="./assets/icons/nothing.svg" alt="">
+      <p>Parece que você ainda não criou uma lista.</p>
+    </div>`
+  } else {
+    saved_lists.innerHTML = ``
+    objLists.forEach((obj) => {
+      console.log(obj)
+      let list = `
+      <div class="quicklist" id="list-${obj.name}">
+      <img src="./assets/icons/shopping.svg" alt="">
+      <h3>${obj.name}</h3>
+      <p>${obj.itens.length}</p>
+    </div>
+  `
+      saved_lists.innerHTML += list
+    })
+  }
+
+
 }
 
 

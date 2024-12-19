@@ -68,11 +68,6 @@
   }
 }
 
-.button-wrapper {
-  display: flex;
-  border-radius: .75rem;
-  overflow: hidden;
-}
 
 .show-popup {
   display: none;
