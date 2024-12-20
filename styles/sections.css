@@ -169,6 +169,7 @@
 }
 
 .saved-lists {
+  position: relative;
   overflow: hidden;
   width: 20%;
   height: 100%;
@@ -230,11 +231,18 @@
 
   }
 
-  .delete-all-itens{
-    margin-top: auto;
-    border: 1px solid red;
-    width: 100%;
-    height: 2.5rem;
+  svg {
+    margin-left: auto;
+    cursor: pointer;
+    path {
+      transition: .2s ease;
+    }
+
+    &:hover {
+      & path {
+        stroke: #cd0400;
+      }
+    }
   }
 }
 

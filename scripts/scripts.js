@@ -7,6 +7,7 @@ const close_message = document.querySelector(".close-alert")
 const show_popup = document.querySelector(".show-popup")
 const container = document.querySelector(".container")
 const save_list = document.querySelector(".save_list")
+const delete_itens = document.querySelector("#delete-all-itens")
 const has_characters = /[^\p{L}0-9 ]+/gu
 
 let item = item_value.value
@@ -202,6 +203,7 @@ function saveList() {
 function showLists() {
   const objLists = JSON.parse(localStorage.getItem("quicklist.json"))
   const saved_lists = document.querySelector(".saved-lists")
+  const quicklist = document.querySelectorAll(".quicklist")
 
   if (objLists == null) {
     saved_lists.innerHTML = `    
@@ -210,7 +212,12 @@ function showLists() {
       <p>Parece que você ainda não criou uma lista.</p>
     </div>`
   } else {
-    // saved_lists.innerHTML = ``
+    if (quicklist.length) {
+      quicklist.forEach((item) => {
+        item.remove()
+      })
+    }
+    delete_itens.classList.remove("show-popup")
     objLists.forEach((obj) => {
       console.log(obj)
       let list = `
