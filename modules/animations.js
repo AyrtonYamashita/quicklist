@@ -11,6 +11,10 @@ export function headupContainer() {
   const container = document.querySelector(".container")
   const add_item_button = document.querySelector(".btn-new-item")
   add_item_button.addEventListener("click", () => {
-    container.classList.toggle("head-up-container")
+    const items = document.querySelectorAll("li")
+    if (items.length === 0) {
+      console.log(items.length)
+      container.classList.toggle("head-up-container")
+    }
   })
 }
