@@ -20,8 +20,6 @@
       padding-block: 20rem;
       gap: 1rem;
       transition: .5s ease;
-      border: 1px solid red;
-
       h2 {
         color: var(--content-secondary);
       }
@@ -31,7 +29,29 @@
       }
 
       .list-items{
-        border: 1px solid red;
+        width: 35rem;
+        height: 35rem;
+
+        .item{
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          width: 35rem;
+          height: 3rem;
+          background-color: var(--background-secondary);
+          border-radius: .75rem;
+          p{
+            color: var(--content-secondary);
+          }
+
+          svg {
+            margin-left: auto;
+            path{
+              stroke: var(--content-secondary);
+            }
+          }
+        }
       }
     }
 
