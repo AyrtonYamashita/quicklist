@@ -1,3 +1,5 @@
+import { checkItensLength } from "./errorHandler.js"
+
 export function startProgram() {
   const button_logo = document.querySelector("header img")
   const header = document.querySelector("header")
@@ -8,13 +10,9 @@ export function startProgram() {
 }
 
 export function headupContainer() {
-  const container = document.querySelector(".container")
-  const add_item_button = document.querySelector(".btn-new-item")
-  add_item_button.addEventListener("click", () => {
-    const items = document.querySelectorAll("li")
-    if (items.length === 0) {
-      console.log(items.length)
-      container.classList.toggle("head-up-container")
-    }
-  })
+  const list_itens = document.querySelectorAll("li")
+  if (checkItensLength(list_itens.length)) {
+    const container = document.querySelector(".container")
+    container.classList.toggle("head-up-container")
+  }
 }

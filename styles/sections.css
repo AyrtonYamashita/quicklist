@@ -20,6 +20,7 @@
       padding-block: 20rem;
       gap: 1rem;
       transition: .5s ease;
+
       h2 {
         color: var(--content-secondary);
       }
@@ -28,14 +29,27 @@
         color: var(--content-tertiary);
       }
 
-      .list-items{
-        width: 35rem;
-        height: 35rem;
+      .list-items {
+        min-width: 35rem;
+        min-height: 25rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding-inline: 1rem;
 
-        .item{
+        &::-webkit-scrollbar {
+          width: 0.25rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--color-brand);
+          border-radius: 0.75rem;
+          background-clip: content-box;
+        }
+
+        .item {
           display: flex;
           align-items: center;
           gap: 1rem;
@@ -44,14 +58,23 @@
           height: 3.2rem;
           background-color: var(--background-secondary);
           border-radius: .75rem;
-          p{
+
+          p {
             color: var(--content-secondary);
           }
 
           svg {
             margin-left: auto;
-            path{
+
+            path {
+              transition: .2s ease;
               stroke: var(--content-secondary);
+            }
+
+            &:hover {
+              path {
+                stroke: #cd0400;
+              }
             }
           }
         }
