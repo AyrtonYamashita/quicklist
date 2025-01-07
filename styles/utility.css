@@ -6,8 +6,6 @@
   height: 4rem;
 }
 
-
-
 .ipt-main {
   width: 25rem;
   height: 2.5rem;
@@ -41,4 +39,9 @@
   &:hover {
     background-color: var(--color-brand-hover);
   }
+}
+
+.checked {
+  color: rgb(158, 158, 158);
+  text-decoration: line-through;
 }

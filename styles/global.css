@@ -35,7 +35,7 @@ html {
   font: 400 .875rem/1rem var(--ff-base);
 }
 
-body{
+body {
   overflow: hidden;
 }
 
@@ -60,6 +60,23 @@ header {
 
 ul {
   list-style: none;
+}
+
+li {
+  transition: .2s ease;
+}
+
+input[type="checkbox"] {
+  all: unset;
+  width: 1rem;
+  height: 1rem;
+  transition: .2s ease;
+  background-color: #a0a0a0;
+  border-radius: .5rem;
+}
+
+input:checked {
+  background-color: #A52C6B;
 }
 
 

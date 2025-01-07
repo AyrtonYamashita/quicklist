@@ -3,9 +3,12 @@ import { headupContainer } from "./animations.js"
 
 export function formEvent() {
   const form = document.querySelector("form")
+  regexInputValue()
   form.onsubmit = (e) => {
     e.preventDefault()
     add()
+    remove()
+    checked()
   }
 }
 
@@ -17,10 +20,10 @@ function add() {
     headupContainer()
     let item =
       `
-    <li class="item">
-      <input type="checkbox" name="${value}" id="id-${value}">
-      <p>${value}</p>
-      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="remove('id-${value}')">
+    <li class="item" id="id-${value}">
+      <input type="checkbox" name="${value}" id="id-${value}" class="check-item">
+      ${value}
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.25 4.58325L15.7336 12.9375C15.6016 15.0719 15.5357 16.1392 15.0007 16.9065C14.7361 17.2858 14.3956 17.606 14.0006 17.8466C13.2017 18.3333 12.1325 18.3333 9.99392 18.3333C7.8526 18.3333 6.78192 18.3333 5.98254 17.8457C5.58733 17.6047 5.24667 17.2839 4.98223 16.9039C4.4474 16.1354 4.38287 15.0667 4.25384 12.9293L3.75 4.58325"
           stroke="#000000" stroke-width="1.25" stroke-linecap="round" />
@@ -36,18 +39,44 @@ function add() {
     input_item.value = ""
   }
 
-  function remove(id) {
-    const item = document.querySelector(`#${id}`)
-    if (item) {
-      item.remove()
-      alert(`${id} removido da lista.`)
-    }
-  }
-
 }
 
+function remove() {
+  const list = document.querySelectorAll("svg")
+  list.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const item = e.target.closest("li")
+      const value_item = item.id.slice(3)
+      console.log(`"${value_item} removido da lista."`)
+      item.remove()
+      headupContainer()
+    })
+  })
+}
 
+function checked() {
+  const list = document.querySelector("ul")
+  list.onclick = (e) => {
+    if (e.target.classList.contains("check-item")) {
+      e.target.closest(".item").classList.toggle("checked")
+    }
+  }
+}
 
-function checkInputRegex() {
+function regexInputValue() {
+  const input = document.querySelector(".ipt-new-item")
+  let item = input.value
+  const has_characters = /[^\p{L}0-9 ]+/gu
 
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(has_characters, "").substring(0, 31)
+    item = input.value.replace(has_characters, "").substring(0, 31)
+    if (item.length >= 32) {
+      input.style.border = "2px solid var(--color-danger)"
+      setTimeout(() => {
+        input.style.border = "2px solid var(--border-primary)"
+      }, 4000)
+      return alert("Valor máximo de 32 caracteres excedido!")
+    }
+  })
 }
